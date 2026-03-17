@@ -2,7 +2,7 @@
 // GET /api/fitbit/** → proxies to https://api.fitbit.com/**
 // e.g. /api/fitbit/1/user/-/activities/list.json → https://api.fitbit.com/1/user/-/activities/list.json
 
-export default async function handler(req, res) {
+async function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).end('Method Not Allowed')
   }
@@ -33,3 +33,5 @@ export default async function handler(req, res) {
     return res.status(502).json({ error: 'Fitbit API proxy failed' })
   }
 }
+
+module.exports = handler

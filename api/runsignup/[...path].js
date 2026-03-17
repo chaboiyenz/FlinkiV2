@@ -1,7 +1,7 @@
 // Vercel Serverless Function
 // GET /api/runsignup/** → proxies to https://runsignup.com/rest/**
 
-export default async function handler(req, res) {
+async function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).end('Method Not Allowed')
   }
@@ -26,3 +26,5 @@ export default async function handler(req, res) {
     return res.status(502).json({ error: 'RunSignUp proxy failed' })
   }
 }
+
+module.exports = handler

@@ -2,11 +2,7 @@
 // POST /api/fitbit-token → proxies to https://api.fitbit.com/oauth2/token
 // Needed because Fitbit's token endpoint doesn't allow CORS from browsers.
 
-export const config = {
-  api: { bodyParser: false }, // read raw urlencoded body
-}
-
-export default async function handler(req, res) {
+async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).end('Method Not Allowed')
   }
@@ -36,3 +32,7 @@ export default async function handler(req, res) {
     return res.status(502).json({ error: 'Token exchange failed' })
   }
 }
+
+handler.config = { api: { bodyParser: false } }
+
+module.exports = handler
