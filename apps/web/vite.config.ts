@@ -31,6 +31,8 @@ export default defineConfig({
   },
 
   build: {
+    outDir: '../../dist',
+    emptyOutDir: true,
     // 2. ADD THIS: Increases stability for Firebase/CommonJS resolution
     commonjsOptions: {
       include: [/firebase/, /node_modules/],
