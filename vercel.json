@@ -3,5 +3,22 @@
   "buildCommand": "pnpm --filter web build",
   "outputDirectory": "dist",
   "installCommand": "pnpm install",
-  "rewrites": [{ "source": "/((?!api/).*)", "destination": "/index.html" }]
+  "rewrites": [
+    {
+      "source": "/api/fitbit-token",
+      "destination": "https://api.fitbit.com/oauth2/token"
+    },
+    {
+      "source": "/api/fitbit/(.*)",
+      "destination": "https://api.fitbit.com/$1"
+    },
+    {
+      "source": "/api/runsignup/(.*)",
+      "destination": "https://runsignup.com/rest/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }
