@@ -19,7 +19,9 @@
     "changeset": "changeset",
     "version": "changeset version",
     "release": "changeset publish",
-    "precheck": "pnpm lint && pnpm typecheck && pnpm build && pnpm test"
+    "precheck": "pnpm lint && pnpm typecheck && pnpm build && pnpm test",
+    "firebase:deploy": "pnpm --filter web build && firebase deploy --only hosting",
+    "firebase:preview": "pnpm --filter web build && firebase hosting:channel:deploy preview"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.1",
